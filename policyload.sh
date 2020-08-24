@@ -39,5 +39,3 @@ curl -s -k -H "$AUTH_TOKEN" \
   -X PUT \
   -d "$(< $POLICY_FILE )" \
   $url > $POLICY_OUT
-
-cat $POLICY_OUT
