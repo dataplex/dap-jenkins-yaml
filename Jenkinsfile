@@ -4,6 +4,11 @@ pipeline {
   agent any
 
   stages {
+    stage('Checkout scm') {
+      steps {
+        checkout scm
+      }
+    }
 
     stage('Generate Root Policy') {
       steps {
@@ -13,7 +18,7 @@ pipeline {
           if [ "$(ls -1 ./snow/*.yml | wc -l)" != "0" ];then
             for i in $(ls -1 ./snow/*.yml); do
               echo "Adding file $i"
-              cat ./snow/$i >> ./output/root.yml
+              cat $i >> ./output/root.yml
             done
           fi
         '''
