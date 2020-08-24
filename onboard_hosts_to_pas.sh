@@ -18,7 +18,7 @@ if [[ $# -lt 4 ]];then
 	exit 1
 fi
 
-DEBUG=0
+DEBUG=1
 
 #DAP_HOST="master.dpxlab.net"
 #CCP_QUERY_URI="https://pvwa.dpxlab.net/AIMWebService/api/Accounts?AppID=DAP_Jenkins_Pipeline&Safe=DAP_API_Connectors&Folder=Root&Object=DAP_API_Connector"
@@ -95,11 +95,12 @@ function onboard_host_account {
 	local hostid="$2"
 	local api_key="$3"
 
-	local rest_add_account="https://$REST_API_HOST/PasswordVault/API/Account"
+	local rest_add_account_uri="https://$REST_API_HOST/PasswordVault/API/Account"
 	debug_msg "Creating: $account - $hostid - $api_key"
 	local rest_add_body
 	rest_add_body="$(create_add_account_body "$account_$hostid" "https://$DAP_HOST/api" "host/$hostid" "$api_key" "$account" "$hostid")"
 	debug_msg "REST Body: $rest_add_body"
+    curl -sk -X POST -H "Authorization: $REST_AUTH_TOKEN" -H "Content-Type: application/json" -d"$rest_add_body" $rest_add_account_uri
 }
 
 
