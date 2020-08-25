@@ -99,8 +99,9 @@ function onboard_host_account {
 	debug_msg "Creating: $account - $hostid - $api_key"
 	local rest_add_body
 	rest_add_body="$(create_add_account_body "$account_$hostid" "https://$DAP_HOST/api" "host/$hostid" "$api_key" "$account" "$hostid")"
+
 	debug_msg "REST Body: $rest_add_body"
-    curl -sk -X POST -H "Authorization: $REST_AUTH_TOKEN" -H "Content-Type: application/json" -d"$rest_add_body" $rest_add_account_uri
+    curl -svk -X POST -H "Authorization: $REST_AUTH_TOKEN" -H "Content-Type: application/json" -d"$rest_add_body" $rest_add_account_uri
 }
 
 
