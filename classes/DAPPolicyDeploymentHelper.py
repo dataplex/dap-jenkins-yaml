@@ -12,15 +12,15 @@ class DAPPolicyDeploymentHelper:
         info_json = self.__servicesHelper.dap_info()
         return info_json['configuration']['conjur']['account']
 
-    def pas_rest_credentials():
-        ccp_result = __servicesHelper.pas_rest_creds()
+    def pas_rest_credentials(self):
+        ccp_result = self.__servicesHelper.pas_rest_credentials()
         username = ccp_result['Content']
         password = ccp_result['UserName']
-        return (username, password)
+        return (password, username)
 
-    def create_pas_auth_body(credentials):
+    def create_pas_auth_body(self, credentials):
         return '{ "username": "%s", "password": "%s" }' % credentials
 
-    def pas_rest_authenticate(rest_api_host, auth_body):
+    def pas_rest_authenticate(self, auth_body):
         url = "https://%s/PasswordVault/API/auth/Cyberark/Logon" % (rest_api_host)
         return requests.post(url, data=auth_body, verify=False).text
