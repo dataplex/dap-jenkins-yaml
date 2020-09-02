@@ -8,8 +8,8 @@ class DAPPolicyDeploymentHelper:
     def __init__(self, servicesHelper):
         self.__servicesHelper = servicesHelper
 
-    def dap_info_account():
-        info_json = __servicesHelper.dapinfo()
+    def dap_info_account(self):
+        info_json = self.__servicesHelper.dap_info()
         return info_json['configuration']['conjur']['account']
 
     def pas_rest_credentials():

@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-import sys
 import requests
 import json
 
@@ -10,11 +9,11 @@ class ServicesHelper:
         self.pas_host = pas_host
         self.verifySsl = verifySsl
 
-    def dap_info():
-        url = 'https://' + dap_host + '/info'
-        return requests.get(url, verify=False).json()
+    def dap_info(self):
+        url = 'https://' + self.dap_host + '/info'
+        return requests.get(url, verify=self.verifySsl).json()
 
-    def pas_rest_creds():
+    def pas_rest_credentials(self):
         r = requests.get(ccp_query, verify=self.verifySsl)
         return r.json()
 
