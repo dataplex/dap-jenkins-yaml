@@ -22,5 +22,5 @@ class DAPPolicyDeploymentHelper:
         return '{ "username": "%s", "password": "%s" }' % credentials
 
     def pas_rest_authenticate(self, auth_body):
-        url = "https://%s/PasswordVault/API/auth/Cyberark/Logon" % (rest_api_host)
-        return requests.post(url, data=auth_body, verify=False).text
+        result = self.__servicesHelper.pas_rest_authenticate(auth_body)
+        return result.text

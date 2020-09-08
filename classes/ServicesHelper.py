@@ -20,8 +20,7 @@ class ServicesHelper:
 
     def pas_rest_authenticate(self, auth_body):
         url = "https://%s/PasswordVault/API/auth/Cyberark/Logon" % (self.pas_host)
-        print url, auth_body
-        response = requests.post(url, data=auth_body, verify=self.verifySsl)
-        print response
+        headers = { "Content-Type": "application/json" }
+        response = requests.post(url, data=auth_body, headers=headers, verify=self.verifySsl)
         return response.text
 

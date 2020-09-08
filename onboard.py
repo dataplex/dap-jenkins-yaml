@@ -14,16 +14,12 @@ def main(argv):
     svchelper = ServicesHelper(dap_host, rest_api_host, ccp_query, False)
     deployHelper = DAPPolicyDeploymentHelper(svchelper)
     
-#    account = deployHelper.dap_info_account()
     pas_creds = deployHelper.pas_rest_credentials()
-    print pas_creds
-    print "========="
     auth_body = deployHelper.create_pas_auth_body(pas_creds)
-    print auth_body
-    print "========="
     pas_auth = svchelper.pas_rest_authenticate(auth_body)
-    print pas_auth
 
+    account = deployHelper.dap_info_account()
+    
     # pas_auth_header = deployHelper.pas_rest_authenticate(deployHelper.create_pas_auth_body(deployHelper.pas_rest_credentials()))
 
     print 'DAP host: ', dap_host
