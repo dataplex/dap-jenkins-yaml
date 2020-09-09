@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import sys
 
@@ -22,10 +22,10 @@ def main(argv):
     
     # pas_auth_header = deployHelper.pas_rest_authenticate(deployHelper.create_pas_auth_body(deployHelper.pas_rest_credentials()))
 
-    print 'DAP host: ', dap_host
-    print 'CCP Query: ', ccp_query
-    print 'REST API: ', rest_api_host
-    print 'Policy File: ', policy_out_path
+    print(f'DAP host: {dap_host}')
+    print(f'CCP Query: {ccp_query}')
+    print(f'REST API: {rest_api_host}')
+    print(f'Policy File: {policy_out_path}')
 
 if __name__ == "__main__":
    main(sys.argv[1:])

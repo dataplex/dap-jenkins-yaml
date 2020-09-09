@@ -10,6 +10,14 @@ pipeline {
       }
     }
 
+    stage('Install requirements') {
+      steps {
+        sh '''
+          pip3 install -r ./requirements.txt
+        '''
+      }
+    }
+
     stage('Generate Root Policy') {
       steps {
         sh '''
@@ -21,6 +29,14 @@ pipeline {
               cat $i >> ./output/root.yml
             done
           fi
+        '''
+      }
+    }
+
+    stage('YAML Lint Generated Policy') {
+      steps {
+        sh '''
+	        yamllint ./output/root.yml
         '''
       }
     }
@@ -44,7 +60,6 @@ pipeline {
         }
       }
     }
-
   }
 
   post {

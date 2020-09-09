@@ -1,9 +1,13 @@
-#======================
+---
+# ======================
 # Synchronizer Policy
-#======================
-- !group vault-dev-admins
+# ======================
+- !group
+  id: vault-dev-admins
 
-- !host Sync_HOST-NAME    # Can be obtained from 'conjur list -k host | grep Sync_'
+# Can be obtained from 'conjur list -k host | grep Sync_'
+- !host
+  id: Sync_HOST-NAME
 
 - !grant
   role: !group vault-dev-admins
@@ -13,9 +17,9 @@
   id: vault-dev
   owner: !group vault-dev-admins
 
-#======================
+# ======================
 # Admin Hosts
-#======================
+# ======================
 
 - &admin-hosts
   - !host
@@ -25,6 +29,6 @@
   role: !user admin
   member: *admin-hosts
 
-#======================
+# ======================
 # Appended Policy Below
-#======================
+# ======================
