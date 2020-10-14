@@ -55,7 +55,7 @@ pipeline {
       steps {
         withCredentials([string(credentialsId: 'CCP_Info', variable: 'CCP_Info')]) {
           sh '''
-            ./onboard_hosts_to_pas.sh master.dpxlab.net "$CCP_Info" "pvwa.dpxlab.net" ./output/policy-load.out
+            ./onboard.py dev.ini "$CCP_Info" ./output/policy-load.out
           '''
         }
       }

@@ -1,0 +1,21 @@
+{
+  "created_roles": {
+    "_:host:test1": {
+      "id": "_:host:test1",
+      "api_key": "3nzy1wn2p0e0n02y99wkmf4xbrb3fc65nw3pvmgb11858rgcf594ey"
+    },
+    "_:host:test2": {
+      "id": "_:host:test2",
+      "api_key": "eeamx53vec0t83pnfm9y1chd39w3qx35y3earvaw87hcdc1p8yyhk"
+    },
+    "_:host:test3": {
+      "id": "_:host:test3",
+      "api_key": "3kznkfz3k8da071wkser1wdr3cs2vjqd473zg2rvc23gk8p0jqtgje"
+    },
+    "_:host:test4": {
+      "id": "_:host:test4",
+      "api_key": "26zacm91ypnbfm1pke9bx18n6g725zd92m2x2mp0z3jh9x21ywq13"
+    }
+  },
+  "version": 3
+}
