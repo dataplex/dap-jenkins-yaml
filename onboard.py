@@ -1,17 +1,24 @@
 #!/usr/bin/env python3
 
 import sys
+import configparser
 
 from classes.ServicesHelper import ServicesHelper
 from classes.DAPPolicyDeploymentHelper import DAPPolicyDeploymentHelper
+from classes.OnboardingConfig import OnboardingConfig
 
 def main(argv):
     config_file = argv[0]
-    ccp_query = argv[1]
+    config_env = argv[1]
+
+    ccp_query = argv[2]
     policy_out_path = argv[3]
 
-    config = OnboardingConfig.parse(config_file)
-    svchelper = ServicesHelper(config, ccp_query, policy_out_path, False)
+    cp = configparser.ConfigParser()
+    cp.read(config_file)
+
+    config = OnboardingConfig(cp[config_env], ccp_query, policy_out_path)
+    svchelper = ServicesHelper(config)
     deployHelper = DAPPolicyDeploymentHelper(svchelper)
 
     deployHelper.onboard_hosts()
