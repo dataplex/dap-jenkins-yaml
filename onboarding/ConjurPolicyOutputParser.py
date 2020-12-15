@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+import json
 
 class ConjurPolicyOutputParser:
     def hosts(self, policy_output):
